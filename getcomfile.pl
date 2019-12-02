@@ -4,8 +4,9 @@ require "cgi-lib.pl";
 
 MAIN:
 {
-
-    open (FILE, "Communication"),
+  if (&ReadParse(*input))
+  {
+    open (FILE, "Communication$input{'Random'}"),
     $/=EOF123;
     $file =<FILE>;
     print <<ABCDEF;
@@ -15,5 +16,5 @@ MAIN:
 $file
 ABCDEF
 close(FILE);
-
+  }
 }
