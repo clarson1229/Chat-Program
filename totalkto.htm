@@ -1,14 +1,74 @@
 <html>
 <head>
+<style>
+
+body {font-family: Arial, Helvetica, sans-serif; background-color:#CCFFCC;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+ 
+}
+
+
+.imgcontainer {
+	text-align: center;
+	
+}
+
+.welcome {
+	text-align: center;
+}
+
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding-top: 16px
+  float: right;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 22px;
+}
+
+
+</style>
 </head>
 <body>
-
-	<form name = form1 method = POST action = totalkto.pl>
-	Client Name: <input name = client> <br>
-	Client Email: <input name = email> <br>
+	<div class="imgcontainer" alt="chat">
+		<img src="chat.jpg" style="max-height: 80px; max-width: 80px">
+	</div>
+	<h1 class="welcome">Welcome! Login and start your chat!</h1>
 	
-	<input type = submit value = "Submit">
-	</form>
+	<form class="login" name = form1 method = POST action = totalkto.pl>
+		<div class="container">
+	
+			<label for="client"><b>Client: </b></label>
+			<input type="text" placeholder="Enter Client Name" name=client>
+			<br></br>
+			<label for="email"><b>Email: </b></label>
+			<input type="text" placeholder="Enter Client Email" name=email> 
+		
+			<button type="submit">Begin Chat!</button>
+		
+		</div>
+	<form>
 	
 </body>
 </html>
