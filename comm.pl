@@ -10,6 +10,9 @@ MAIN:
     $Name=$input{'Name'};
     $Email=$input{'Email'};
     $Random=$input{'Random'};
+    open(INFO, ">>Information");
+		print INFO "Company= $Company; Name = $Name; Email = $Email; Random = $Random\n";
+		close(INFO);
   print <<ABCDEF;
 Content-type: text/html; charset = utf8;
 
@@ -18,6 +21,13 @@ Content-type: text/html; charset = utf8;
   <head>
   </head>
   <body>
+  <style>
+  
+  body {
+	background-color:#CCFFCC;
+  }
+  
+  </style>
   <script language=Javascript>
 		if(window.XMLHttpRequest){
 			request = new XMLHttpRequest();
@@ -27,9 +37,9 @@ Content-type: text/html; charset = utf8;
     setInterval(getComm, 1000);
 
     function getComm(){
-      request.open('GET', 'getcomfile.pl?Random=' + document.form1.random.value, true);
+      request.open('GET', 'getcomfile.pl', true);
       request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      request.send(' ');
+      request.send(" ");
 
       request.onreadystatechange=function(){
 	      if(request.readyState==4 && request.status==200){
@@ -47,7 +57,7 @@ Content-type: text/html; charset = utf8;
 	    request.send('name='    + document.form1.name.value +
 									'&company=' + document.form1.companyname.value+
 									'&email='   + document.form1.email.value+
-                  '&Random='  + document.form1.random.value+
+                  '&random='  + document.form1.random.value+
 									'&msg='     + document.form1.in.value);
 	    request.onreadystatechange=function(){
 	      if(request.readyState==4 && request.status==200){
@@ -59,18 +69,26 @@ Content-type: text/html; charset = utf8;
 	    }
 		}
 	</script>
-  <form name=form1>
+  <form name=form1 style="display: inline-block">
     <input type=hidden name=companyname value=$Company>
     <input type=hidden name=name value=$Name>
     <input type=hidden name=email value=$Email>
     <input type=hidden name=random value=$Random>
-    <textarea name=display rows=40 cols=100>
-    </textarea>
-    <br>input: <br>
-    <textarea name=in rows=40 cols=100>
-    </textarea><br>
-    <input type=button value="send" onclick='sendmsg()'
+	
+	<div value=$company></div>
+	<div id="leftDiv" style="border: solid black">
+		
+		<textarea name=display rows=30 cols=100>
+		</textarea>
+	</div>
+	
+	<div id="rightDiv">
+		<br>input: <br>
+		<textarea name=in rows=30 cols=100>
+		</textarea><br>
+	<div>
 
+	<input type=button value="send" onclick='sendmsg()'/>
   </form>
 </body>
 </html>

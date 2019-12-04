@@ -6,9 +6,8 @@ MAIN:
 {
 	if (&ReadParse(*input))
 	{
-
-		open(INFO, ">>communication$input{'Random'}");
-		print INFO "Company= $input{'company'}; Name = $input{'name'}; Email = $input{'email'}; Random = $input{'Random'}; Message= $input{'msg'}\n";
+		open(INFO, ">>communication");
+		print INFO "Company= $input{'company'}; Name = $input{'name'}; Email = $input{'email'}; Random = $input{'random'}; Message= $input{'msg'}\n";
 		close(INFO);
 		print <<ABCDEF;
 Content-type: text/html; charset = utf8;
